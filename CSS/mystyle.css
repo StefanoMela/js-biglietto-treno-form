@@ -16,3 +16,9 @@ h2 {
 
     color: white;
 }
+
+
+.card {
+
+    box-shadow: 5px 10px #888888;
+}

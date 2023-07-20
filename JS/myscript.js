@@ -16,33 +16,30 @@ sendButton.addEventListener("click", function() {
     
     
     const userName = userNameInput.value;
-    document.getElementById("userNameStamp").innerHTML += userName;
+    document.getElementById("userNameStamp").innerHTML = userName;
 
     const familyName = userFamilyNameInput.value;
     document.getElementById("userFamilyNameStamp").innerHTML += familyName;
 
-    const userAge = userAgeInput.value;
+    const userAge = parseInt(userAgeInput.value);
     
-    const kmPrice = totalKmInput.value * .21;
+    const kmPrice = parseFloat(totalKmInput.value) * .21;
 
     document.getElementById("ticketPrice").innerHTML += kmPrice + "€"; 
         
     if (userAge < 18) {
         
         discount = (kmPrice * 20) / 100;
-        const totalDiscountPrice = (kmPrice - discount).toFixed(2);
-        document.getElementById("discount").innerHTML += (kmPrice - totalDiscountPrice).toFixed(2) + "€";
         
     } else if (userAge >= 65) {
         
         discount = (kmPrice * 40) / 100;
-        const totalDiscountPrice = (kmPrice - discount).toFixed(2);
-        document.getElementById("discount").innerHTML += (kmPrice - totalDiscountPrice).toFixed(2) + "€";
         
-
-        document.getElementById("offPrice").innerHTML += (kmPrice - totalDiscountPrice) + "€";
     }
 
+    const totalDiscountPrice = (kmPrice - discount).toFixed(2);
+    document.getElementById("discount").innerHTML += discount + "€";
+    document.getElementById("offPrice").innerHTML += totalDiscountPrice + "€";
 
 
 })
