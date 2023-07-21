@@ -1,5 +1,3 @@
-// SALVATAGGIO INPUT UTENTE
-
 
 const userNameInput = document.getElementById("userNameInput");
 const userFamilyNameInput = document.getElementById("userFamilyNameInput");
@@ -12,20 +10,17 @@ let discount = 0;
 
 sendButton.addEventListener("click", function() {
     
-    
-    
-    
     const userName = userNameInput.value;
     document.getElementById("userNameStamp").innerHTML = userName;
 
     const familyName = userFamilyNameInput.value;
-    document.getElementById("userFamilyNameStamp").innerHTML += familyName;
+    document.getElementById("userFamilyNameStamp").innerHTML = familyName;
 
     const userAge = parseInt(userAgeInput.value);
     
     const kmPrice = parseFloat(totalKmInput.value) * .21;
 
-    document.getElementById("ticketPrice").innerHTML += kmPrice + "€"; 
+    document.getElementById("ticketPrice").innerHTML = kmPrice + "€";                                                                              
         
     if (userAge < 18) {
         
@@ -36,13 +31,16 @@ sendButton.addEventListener("click", function() {
         discount = (kmPrice * 40) / 100;
         
     }
+        const totalDiscountPrice = (kmPrice - discount).toFixed(2);
+        document.getElementById("discount").innerHTML = discount.toFixed(2) + "€";
+        document.getElementById("offPrice").innerHTML = totalDiscountPrice + "€";
 
-    const totalDiscountPrice = (kmPrice - discount).toFixed(2);
-    document.getElementById("discount").innerHTML += discount + "€";
-    document.getElementById("offPrice").innerHTML += totalDiscountPrice + "€";
-
-
+        userNameInput.value = "";
+        userFamilyNameInput.value = "";
+        userAgeInput.value = "";
+        totalKmInput.value = "";
 })
+
 
 
 
